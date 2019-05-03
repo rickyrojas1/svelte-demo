@@ -12,10 +12,27 @@
 <style>
 	h1 {
 	  color: green;
+	  text-align: center;
+	  margin-top: 30px;
+	}
+	p {
+	  text-align: center;
+	}
+	.button-container {
+	  margin: auto;
+	  display: flex;
+	  justify-items: center;
+	  width: 40%;
 	}
 	button {
+	  text-align: center;
+	  margin: auto;
 	  width: 300px;
 	  height: 40px;
+	}
+	input {
+	  display: flex;
+	  margin: auto;
 	}
 	.red {
 	  color: red;
@@ -24,12 +41,14 @@
 
 <div>
 	<h1 transition:fly>Count:  {count}!</h1>
+	<div class="button-container">
 <button on:click={ () => count ++}  style={count < 69? 'color: green': '' } >
 CLICK ME TO ADD ONE
 </button>
 <button on:click={ handleDecrement}  class={count > 69? 'red': '' }>
 CLICK ME TO MINUS ONE
 </button>
+	</div>
 <hr>
 </div>
 
@@ -42,15 +61,18 @@ CLICK ME TO MINUS ONE
 {:else if number < 69}
 	<p in:fly={{ y: 1000, duration: 500}} out:fly={{ y: 500, duration: 500}}>Loser 💩💩💩</p>
 {/if}
+	
+	<div class="button-container">
 <button on:click={ randomNumer}  >
 CLICK ME FOR RANDOM NUMBER
 </button>
+	</div>
 <hr>
 </div>
 
 <div>
-<input bind:value={textVal} type="text">
 <h1>{textVal}</h1>
+<input bind:value={textVal} type="text">
 </div>
 
 
