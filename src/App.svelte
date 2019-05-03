@@ -29,7 +29,7 @@
 	  display: flex;
 	  justify-items: center;
 	  width: 40%;
-	  margin-top: 30px;
+	  margin-bottom: 30px;
 	}
 	button {
 	  text-align: center;
@@ -93,6 +93,10 @@ CLICK ME FOR RANDOM NUMBER
 
 <div>
 <h1>List of Names</h1>
+<div class="button-container">
+<input  bind:value={newName}  type="text">
+<button on:click={addPerson} disabled={newName === ''}>Add Person</button>
+</div>
 <ul>
 {#each names as name}
 	<li>{name}</li>
@@ -100,10 +104,7 @@ CLICK ME FOR RANDOM NUMBER
 		<p>We aint got nobody</p>
 {/each}
 </ul>
-<div class="button-container">
-<input  bind:value={newName}  type="text">
-<button on:click={addPerson} disabled={newName === ''}>Add Person</button>
-</div>
+
 <hr>
 </div>
 
