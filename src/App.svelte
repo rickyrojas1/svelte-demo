@@ -3,10 +3,16 @@
 	export let count = 69;
 	export let color = "red";
 	export let number;
+	export let newName = "";
 	export let textVal = "Binding is so Easy";
+	export let names = ["Ricky", "Jesse", "Matt", "Jonny"];
 
 	let handleDecrement = () => count--;
 	let randomNumer = () => (number = Math.random() * 100);
+	let addPerson = e => {
+	  names = [...names, newName];
+	  newName = "";
+	};
 </script>
 
 <style>
@@ -23,16 +29,23 @@
 	  display: flex;
 	  justify-items: center;
 	  width: 40%;
+	  margin-top: 30px;
 	}
 	button {
 	  text-align: center;
 	  margin: auto;
-	  width: 300px;
-	  height: 40px;
+	  width: 270px;
+	  height: 30px;
 	}
 	input {
 	  display: flex;
 	  margin: auto;
+	  width: 270px;
+	  height: 30px;
+	}
+	ul {
+	  display: table;
+	  margin: 0 auto;
 	}
 	.red {
 	  color: red;
@@ -55,7 +68,7 @@ CLICK ME TO MINUS ONE
 
 <div>
 <h1>Random Number Generator: </h1>
-<p>{number ? number : 'number undefined'}</p>
+<p>{number ? number : ''}</p>
 {#if number >= 69}
 	<p in:fly={{ x: 1000, duration: 500}} out:fly={{ x: 500, duration: 500}}>We got a winner 🤑🤑🤑</p>
 {:else if number < 69}
@@ -73,6 +86,25 @@ CLICK ME FOR RANDOM NUMBER
 <div>
 <h1>{textVal}</h1>
 <input bind:value={textVal} type="text">
+<hr>
+</div>
+
+
+
+<div>
+<h1>List of Names</h1>
+<ul>
+{#each names as name}
+	<li>{name}</li>
+	{:else}
+		<p>We aint got nobody</p>
+{/each}
+</ul>
+<div class="button-container">
+<input  bind:value={newName}  type="text">
+<button on:click={addPerson} disabled={newName === ''}>Add Person</button>
+</div>
+<hr>
 </div>
 
 
